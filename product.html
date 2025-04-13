@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gulp Roast | Our Products</title>
+
+  <!-- Font Awesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Lato&family=Poppins:wght@600&display=swap" rel="stylesheet">
+
+  <!-- Internal CSS -->
+  <style>
+    /* ==========================================
+       Global Base Styles
+    ========================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Lato', sans-serif;
+      line-height: 2;
+      background-color: #082B59;
+      color: #fff;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Poppins', sans-serif;
+      margin-top: 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      color: #59331d;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+   /* ===== Header and Navigation (Right-Aligned, Compact) ===== */
+header {
+  background-color: #333;
+  padding: 15px 20px;
+}
+
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header .logo img {
+  width: 140px;
+}
+
+header ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px; /* reduce space between nav items */
+  margin: 0;
+  padding: 0;
+}
+
+header ul li {
+  margin: 0;
+}
+
+header ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+header ul li a:hover {
+  color: #f9a825;
+}
+
+/* Larger screens - move logo to left and links to right */
+@media (min-width: 768px) {
+  nav {
+    flex-wrap: nowrap;
+  }
+
+  nav .logo {
+    flex: 0 0 auto;
+    text-align: left;
+    margin-bottom: 0;
+  }
+
+  nav ul {
+    flex: 1;
+    justify-content: flex-end;
+  }
+}
+    /* ==========================================
+       Background Section
+    ========================================== */
+    .main-bkgd {
+      background: #ffffff url(https://assets.codepen.io/6306176/gulp-bean-bkgd.jpg) repeat-x bottom;
+      background-size: cover;
+      padding-bottom: 300px;
+      color: #000;
+    }
+
+    /* ==========================================
+       Main Layout
+    ========================================== */
+    .main {
+      display: grid;
+      grid-template-columns: 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    article {
+      grid-column: 1 / -1;
+    }
+
+    aside {
+      grid-column: 1 / -1;
+    }
+
+    figure {
+      background-color: #59331d;
+      border-radius: 10px;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    figure img {
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    figcaption {
+      padding: 0.75rem 1rem;
+      color: #f2f2f2;
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================
+       Buttons
+    ========================================== */
+    .button {
+      display: inline-block;
+      padding: 0.5rem 1.25rem;
+      background-color: #59331D;
+      color: #f2f2f2;
+      border: 3px solid #59331d;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+    }
+
+    .button:hover {
+      background-color: #f2f2f2;
+      color: #59331d;
+    }
+
+    /* ==========================================
+       Footer
+    ========================================== */
+    footer {
+      border-top: 10px solid #d98555;
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #f2f2f2;
+    }
+
+    footer ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      list-style: none;
+      margin: 0 0 1rem 0;
+      padding: 0;
+    }
+
+    footer a {
+      font-size: 2rem;
+      margin: 0 1rem;
+      color: #f2f2f2;
+    }
+
+    footer a:hover {
+      color: #d98555;
+    }
+
+    .fa {
+      font-family: 'FontAwesome', sans-serif;
+    }
+
+    /* ==========================================
+       Media Queries
+    ========================================== */
+
+    /* Tablets (≥600px) */
+    @media (min-width: 600px) {
+      .main {
+        grid-template-columns: 2fr 1fr;
+      }
+
+      article {
+        grid-column: 1 / 2;
+      }
+
+      aside {
+        grid-column: 2 / 3;
+      }
+
+      nav .logo {
+        flex-basis: auto;
+        text-align: left;
+      }
+
+      .main-bkgd {
+        background-position: bottom center;
+        background-size: cover;
+      }
+
+      footer ul {
+        gap: 1rem;
+      }
+    }
+
+    /* Desktops (≥992px) */
+    @media (min-width: 992px) {
+      .main {
+        grid-template-columns: 3fr 1fr;
+        gap: 3rem;
+      }
+
+      nav ul {
+        justify-content: space-between;
+      }
+
+      nav .logo {
+        margin-right: auto;
+      }
+
+      aside {
+        align-self: start;
+      }
+
+      .main-bkgd {
+        background: #ffffff url(https://assets.codepen.io/6306176/gulp-bean-bkgd.jpg) no-repeat bottom center;
+        background-size: contain;
+        padding-bottom: 400px;
+      }
+
+      footer ul {
+        justify-content: flex-end;
+        gap: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ===== Header / Navigation ===== -->
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="https://uxuicurriculum.wixsite.com/gulproast">
+          <img src="https://static.bc-edx.com/uxui/uxui-v3/m9/coffee-brand-assets/gulp-logo-light.png" alt="Gulp Roast Logo" />
+        </a>
+      </div>
+      <ul>
+        <li><a href="file://C:/Users/pknep/OneDrive/Desktop/Uthira-10-Challenge/Homepage/index.html">Home</a></li>
+        <li><a href="file://C:/Users/pknep/OneDrive/Desktop/Uthira-10-Challenge/AboutPage/about.html">About</a></li>
+        <li><a href="file://C:/Users/pknep/OneDrive/Desktop/Uthira-10-Challenge/ProductPage/ProductPage.html">Product</a></li>
+      </ul>
+    </nav>
+  </header>  
+
+  <!-- ===== Background / Hero Section ===== -->
+  <div class="main-bkgd">
+    <main class="main" role="main">
+
+      <!-- ===== Product Details ===== -->
+      <article>
+        <section>
+          <h1>Our Coffee Beans</h1>
+          <p>
+            At Gulp Roast, we pride ourselves on small-batch roasting and sourcing sustainable beans from around the world. 
+            Discover our lineup of carefully crafted blends and roasts that cater to every palate.
+          </p>
+        </section>
+
+        <section>
+          <h2>House Blend</h2>
+          <p>
+            Our signature medium roast features rich notes of chocolate and toasted almond — 
+            a balanced and comforting everyday brew.
+          </p>
+          <a href="#" class="button">Buy House Blend</a>
+        </section>
+
+        <section>
+          <h2>Espresso Roast</h2>
+          <p>
+            Deep and bold with caramelized sugar undertones, this dark roast is specially made for espresso lovers 
+            seeking an intense flavor punch.
+          </p>
+          <a href="#" class="button">Buy Espresso Roast</a>
+        </section>
+      </article>
+
+      <!-- ===== Sidebar Image ===== -->
+      <aside>
+        <figure>
+          <img 
+            src="https://assets.codepen.io/6306176/gulp-espresso.jpg" 
+            alt="Espresso Roast Coffee Beans close-up" />
+          <figcaption>Espresso Roast — Intense, Rich Flavor</figcaption>
+        </figure>
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <div class="footer-content">
+      <ul>
+        <li><a href="#"><i class="fab fa-facebook-square fa"></i></a></li>
+        <li><a href="#"><i class="fab fa-twitter-square fa"></i></a></li>
+        <li><a href="#"><i class="fab fa-instagram fa"></i></a></li>
+      </ul>
+      <p>&copy; 2025 Gulp Roast. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
